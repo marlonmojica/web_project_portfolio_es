@@ -1,0 +1,506 @@
+/* ===== 1. Variables globales ===== */
+:root {
+  --color-bg: #0A0A0A;
+  --color-text: #FFFFFF;
+  --color-text-muted: #B3B3B3;
+  --color-accent: #3FC76C;
+  --color-accent-soft: #27684a;
+
+  --font-display: "Archivo Black", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+}
+/* ===== 2. Fuentes locales ===== */
+@font-face {
+  font-family: "Archivo Black";
+  src: url("../fonts/ArchivoBlack-Regular.woff2") format("woff2"),
+    url("../fonts/ArchivoBlack-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Regular.woff2") format("woff2"),
+    url("../fonts/OpenSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-SemiBold.woff2") format("woff2"),
+    url("../fonts/OpenSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Bold.woff2") format("woff2"),
+    url("../fonts/OpenSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== 3. Reset extra ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===== 4. Body ===== */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ===== 5. Container principal ===== */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 80px 0;
+  }
+  
+  /* ===== 6. Sección Perfil — flex horizontal ===== */
+  .profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+  } 
+  
+  .profile__info {
+    flex: 1;
+    max-width: 640px;
+  }
+
+  .profile__photo {
+    width: 380px;
+    height: 480px;
+    object-fit: cover;
+    flex-shrink: 0;
+  } 
+/* ===== 7. Tipografía del Perfil ===== */
+  .profile__name {
+    font-family: var(--font-display);
+    font-size: 92px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  
+  .profile__role {
+    font-size: 16px;
+    font-weight: 400; 
+    color: var(--color-text-muted);
+    margin: 0 0 32px;
+  }
+
+  .profile__bio {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 40px;
+  }
+
+  /* ===== 8. Lista de enlaces (reset + layout horizontal) ===== */
+  .profile__links {
+    list-style: none;
+    padding: 0; 
+    margin: 0;
+    display: flex;
+    gap: 32px;
+  } 
+  
+  /* ===== 9. Enlaces con subrayado de gradiente (desafío IA) ===== */
+  .profile__link { 
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none; 
+    padding-bottom: 6px;
+    background-image: linear-gradient(to right, var(--color-accent), #00FF99);
+    background-size: 100% 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat; 
+    transition: opacity 0.2s ease;
+  }
+  
+  .profile__link:hover {
+    opacity: 0.6;
+  } 
+/* ===== 10. Sección Habilidades ===== */
+  .skills {
+    margin-top: 100px;
+  } 
+  
+  .skills__title {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0 0 40px;
+  } 
+  
+  .skills__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  } 
+  
+  .skills__item {
+    display: flex;
+  }
+
+  .skills__item img {
+    width: 64px;
+    height: 64px;
+  }
+ /* ===== 11. Sección Proyectos ===== */
+  .projects {
+    margin-top: 100px;
+  } 
+  
+  .projects__title {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0 0 40px; 
+  } 
+  
+  /* ===== 12. Grid de 2 columnas ===== */
+  .projects__list {
+    list-style: none;
+    padding: 0; 
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  
+  /* ===== 13. Tarjeta de proyecto ===== */
+  .project-card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  } 
+  
+  /* ===== 14. Media (imagen + velo) ===== */
+  .project-card__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  } 
+  
+  .project-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  } 
+  
+  /* ===== 15. DESAFÍO IA: velo de oscurecimiento ===== */
+  .project-card__veil {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+  }
+  
+  /* ===== 16. Tipografía dentro de la tarjeta ===== */
+  .project-card__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 24px 24px 12px;
+    line-height: 1.3;
+  }
+  
+  .project-card__description {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin: 0 24px 24px;
+    flex-grow: 1;
+  }
+  
+  /* ===== 17. Enlaces de la tarjeta ===== */
+  .project-card__links {
+    list-style: none; 
+    padding: 0;
+    margin: 0 24px 24px;
+    display: flex;
+    gap: 24px;
+  }
+  
+  .project-card__link {
+    font-size: 14px; 
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .project-card__link:hover {
+    opacity: 0.6;
+  }
+/* ===== 18. Sección Contacto ===== */
+  .contact {
+    margin-top: 100px;
+    padding: 0 20px 80px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  } 
+  
+  .contact__title { 
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .contact__email {
+    font-size: 18px; 
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .contact__email:hover {
+    opacity: 0.6;
+  } 
+  
+  /* ===== 19. Lista de socials ===== */
+  .contact__socials {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    gap: 24px;
+  } 
+  
+  .contact__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 50%;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .contact__social:hover { 
+    opacity: 0.7;
+    border-color: var(--color-accent);
+  } 
+/* ===== 20. DESAFÍO IA: Fondo brillante con radial-gradient + calc ===== */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(
+        circle at calc(50% - 400px) 200px,
+        rgba(63, 199, 108, 0.22),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at calc(50% + 450px) 600px,
+        rgba(39, 104, 74, 0.28),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at calc(50% - 250px) 1200px,
+        rgba(63, 199, 108, 0.18),
+        transparent 50%
+      );
+  } 
+/* ===== 21. Tablet — viewport ≤ 1023px ===== */
+  @media (max-width: 1023px) {
+  
+    /* Container con menos padding lateral */
+    main {
+      padding: 60px 40px 0;
+    }
+  
+    /* PERFIL — sigue horizontal pero compacto */
+    .profile {
+      gap: 40px;
+    }
+  
+    .profile__name {
+      font-size: 64px;
+    }
+  
+    .profile__photo {
+      width: 280px;
+      height: 360px;
+    }
+  
+    .profile__bio {
+      font-size: 15px;
+    }
+  
+    /* HABILIDADES — logos más chicos, gap menor */
+    .skills {
+      margin-top: 80px;
+    }
+  
+    .skills__title {
+      font-size: 32px;
+    }
+  
+    .skills__list {
+      gap: 24px;
+    }
+
+    .skills__item img {
+      width: 48px;
+      height: 48px;
+    }
+  
+    /* PROYECTOS — pasan a 1 columna apilada */
+    .projects {
+      margin-top: 80px;
+    }
+  
+    .projects__title { 
+      font-size: 32px;
+    }
+
+    .projects__list {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  
+    /* CONTACTO */
+    .contact {
+      margin-top: 80px;
+    }
+
+    .contact__title {
+      font-size: 32px;
+    }
+  }
+/* ===== 22. Móvil — viewport ≤ 767px ===== */
+  @media (max-width: 767px) {
+  
+    /* Container — padding mínimo */
+    main {
+      padding: 40px 16px 0;
+    }
+  
+    /* PERFIL — cambio CRÍTICO: de horizontal a column */
+    .profile {
+      flex-direction: column;
+      gap: 24px;
+    }
+  
+    /* Foto pasa a width 100% + height 280px (lo pide el sprint) */
+    .profile__photo {
+      width: 100%;
+      height: 280px;
+      order: -1;
+    }
+  
+    .profile__info {
+      max-width: 100%;
+    }
+
+    .profile__name {
+      font-size: 48px;
+    }
+  
+    .profile__role {
+      font-size: 14px;
+    }
+
+    .profile__bio {
+      font-size: 14px;
+    }
+  
+    /* Enlaces del perfil — apilan verticalmente */
+    .profile__links {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  
+    /* HABILIDADES — wrap a múltiples filas */
+    .skills {
+      margin-top: 60px;
+    }
+  
+    .skills__title {
+      font-size: 28px;
+    }
+  
+    .skills__list {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+  
+    .skills__item img {
+      width: 40px;
+      height: 40px;
+    }
+  
+    /* PROYECTOS — sigue 1 columna, márgenes menores */
+    .projects {
+      margin-top: 60px;
+    }
+  
+    .projects__title {
+      font-size: 28px;
+    }
+  
+    .project-card__title {
+      font-size: 18px;
+    }
+
+    .project-card__description {
+      font-size: 13px;
+    }
+  
+    /* CONTACTO */
+    .contact {
+      margin-top: 60px;
+    }
+  
+    .contact__title {
+      font-size: 28px;
+    }
+
+    .contact__email {
+      font-size: 16px;
+      text-align: center;
+      word-break: break-all;
+    }
+  } 
